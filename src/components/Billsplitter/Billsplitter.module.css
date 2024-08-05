@@ -1,0 +1,89 @@
+.container {
+  display: flex;
+  gap: 16px;
+  /* width: 72.375rem; */
+  width: 1280px;
+  padding: 61px;
+  /* grid-area: auto; */
+  gap: 61px;
+}
+
+.leftContainer{
+  /* padding: 60px 60px 90px 60px; */
+  max-width: 32.875rem;
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+  /* width: 100%; */
+
+}
+
+.rigthContainer{
+  /* padding:0px 60px; */
+  background-color: hsla(183, 100%, 15%, 1);
+  border-radius: 16px;
+  max-width: 35.375rem;
+  display: flex;
+  flex-direction: column;
+  row-gap: 64px;
+}
+
+.tipAmount{
+  padding: 56px 56px 0px 56px;
+  /* padding-top: 56px; */
+
+}
+.totalAmount{
+  /* padding: 60px 56px 0px 56px; */
+  padding: 0px 56px;
+}
+
+.reset{
+  /* max-width: 454px; */
+  /* margin: 457x 56px 56px 56px; */
+  padding: 0px 56px;
+  padding-top: 101px;
+}
+
+/* Mobile (0-550px) */
+@media (max-width: 550px) {
+  .container { 
+    /* padding: 8px; */
+    max-width: 375px;
+    display:flex;
+    flex-direction: column;
+    padding: 0px;
+    gap: 32px;
+  }
+
+  .leftContainer{
+    max-width: 374px;
+    gap: 32px;
+  }
+
+  .rigthContainer{
+    max-width: 374px;
+    gap:24px;
+    margin: 32px;
+    /* padding: 32px; */
+    /* width: 100%; */
+  }
+  .totalAmount,.tipAmount,.reset{
+    padding: 0px 15px;
+    padding-top: 24px;
+  }
+  .reset{
+    padding-top: 60px;
+    padding-bottom: 20px;
+    
+  }
+  .numberInput {
+    font-size: 14px;
+    line-height: 20.73px;
+  }
+
+  .label,
+  .errorMsg {
+    font-size: 1rem;
+  }
+}
