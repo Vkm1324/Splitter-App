@@ -1,14 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useReducer } from "react";
 import styles from "./Billsplitter.module.css";
 
 import InputNumber from "../InputNumber/InputNumber";
 import TipMenu from "../TipMenu/TipMenu";
 import SplitperPerson from "../SplitPerPerson/SplitPerPerson";
 import Resetbutton from "../Resetbutton/Resetbutton";
+import { initialState, reducer } from "./billsplitterReduce";
+
+// import { BillsplitterProps } from "./Billsplitter";
+
 /**
- * Props for the YourComponent component.
+ * Props for the BillsplitterProps component.
  */
-interface BillsplitterProps {
+export interface BillsplitterProps {
   /**
    * Label for the first InputNumber component.
    */
@@ -86,111 +90,84 @@ interface BillsplitterProps {
 }
 
 const Billsplitter: React.FC<BillsplitterProps> = (Props) => {
-  // handling bill amount input
-  const [BillAmountInput, setBillAmountInput] = useState<number>(0.0);
-  const [BillAmountInputError, setBillAmountInputError] = useState<string>("");
+  const [state, dispatch] = useReducer(reducer, initialState);
+
   const handleBillAmountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
-    // Allow only non-negative numbers
     if (/^\d*\.?\d*$/.test(value)) {
       const numberValue = parseFloat(value);
-
-      // If the value is a valid number, update the state
       if (!isNaN(numberValue) && numberValue >= 0) {
-        // TODO remove leading zero
-
-        // console.log(numberValue);
-        // console.log(numberValue.toFixed(2));
-        // console.log(parseInt(numberValue.toFixed(2)));
-
-        setBillAmountInput(parseFloat(numberValue.toFixed(2)));
-        setBillAmountInputError("");
+        dispatch({
+          type: "SET_BILL_AMOUNT",
+          payload: parseFloat(numberValue.toFixed(2)),
+        });
+        dispatch({ type: "SET_BILL_AMOUNT_ERROR", payload: "" });
       } else {
-        setBillAmountInput(0.0);
-        setBillAmountInputError("Amount cannot be negative");
+        dispatch({ type: "SET_BILL_AMOUNT", payload: 0.0 });
+        dispatch({
+          type: "SET_BILL_AMOUNT_ERROR",
+          payload: "Amount cannot be negative",
+        });
       }
     } else {
-      setBillAmountInput(0);
-      setBillAmountInputError("please enter a non-negative number");
+      dispatch({ type: "SET_BILL_AMOUNT", payload: 0 });
+      dispatch({
+        type: "SET_BILL_AMOUNT_ERROR",
+        payload: "Please enter a non-negative number",
+      });
     }
   };
 
-  // handling number of people input
-  const [NumberOfPersonsInput, setNumberOfPersonsInput] = useState<number>(1);
-  const [NumberOfPersonsInputError, setNumberOfPersonsInputError] =
-    useState<string>("");
   const handleNumberOfPersonsInput = (
     e: React.ChangeEvent<HTMLInputElement>
   ) => {
     const value = e.target.value;
-    // Allow only non-negative numbers
-    // && Number.isInteger(value)
     if (/^\d*\.?\d*$/.test(value)) {
       const numberValue = parseFloat(value);
-
-      // If the value is a valid number, update the state
       if (!isNaN(numberValue) && numberValue > 0) {
-        setNumberOfPersonsInput(numberValue);
-        setNumberOfPersonsInputError("");
+        dispatch({ type: "SET_NUMBER_OF_PERSONS", payload: numberValue });
+        dispatch({ type: "SET_NUMBER_OF_PERSONS_ERROR", payload: "" });
       } else {
-        setNumberOfPersonsInput(1);
-        setNumberOfPersonsInputError("Person cannot be zero or negative");
+        dispatch({ type: "SET_NUMBER_OF_PERSONS", payload: 1 });
+        dispatch({
+          type: "SET_NUMBER_OF_PERSONS_ERROR",
+          payload: "Person cannot be zero or negative",
+        });
       }
     } else {
-      setNumberOfPersonsInputError("Invalid input, please enter number");
+      dispatch({
+        type: "SET_NUMBER_OF_PERSONS_ERROR",
+        payload: "Invalid input, please enter a number",
+      });
     }
   };
-
-  // handling tip menu
-  const [selectedButton, setSelectedButton] = useState<string>("");
 
   const handleTipButtonClick = (value: string) => {
-    setSelectedButton(value);
-    console.log(value);
+    dispatch({ type: "SET_SELECTED_BUTTON", payload: value });
   };
 
-  // handling Tip amount per person
-  const [tipPerPerson, setTipPerPerson] = useState<number>(0.0);
-
-  // handling Total amount per person
-  const [totalAmountPerPerson, settotalAmountPerPerson] = useState<number>(0.0);
-
-  // handling reset button
-  // Reset to default value
-  const [inactive, setInactive] = useState<boolean>(true);
   const handleReset = () => {
-    const customButtonInput = document.getElementById(
-      "customButton"
-    ) as HTMLInputElement;
-    if (customButtonInput) {
-      customButtonInput.value = "";
-    }
-    setInactive(true);
-    setBillAmountInput(0.0);
-    setNumberOfPersonsInput(1);
-    setSelectedButton("");
-    setBillAmountInputError("");
-    setNumberOfPersonsInputError("");
-    console.log("Reset button clicked");
-    // setTipPerPerson(0);
-    // settotalAmountPerPerson(0);
+    dispatch({ type: "RESET" });
   };
 
   useEffect(() => {
-    const tipPercentage = parseFloat(selectedButton) / 100;
-    const totalTip = BillAmountInput * tipPercentage;
+    const tipPercentage = parseFloat(state.selectedButton) / 100;
+    const totalTip = state.billAmountInput * tipPercentage;
     const tipPerPerson =
-      NumberOfPersonsInput > 0 && totalTip > 0
-        ? totalTip / NumberOfPersonsInput
+      state.numberOfPersonsInput > 0 && totalTip > 0
+        ? totalTip / state.numberOfPersonsInput
         : 0.0;
-    setTipPerPerson(tipPerPerson);
     const totalAmountPerPerson =
-      BillAmountInput > 0
-        ? BillAmountInput / NumberOfPersonsInput + tipPerPerson
+      state.billAmountInput > 0
+        ? state.billAmountInput / state.numberOfPersonsInput + tipPerPerson
         : 0.0;
-    settotalAmountPerPerson(totalAmountPerPerson);
-    setInactive(false);
-  }, [BillAmountInput, NumberOfPersonsInput, selectedButton]);
+    dispatch({ type: "SET_TIP_PER_PERSON", payload: tipPerPerson });
+    dispatch({
+      type: "SET_TOTAL_AMOUNT_PER_PERSON",
+      payload: totalAmountPerPerson,
+    });
+    dispatch({ type: "SET_INACTIVE", payload: false });
+  }, [state.billAmountInput, state.numberOfPersonsInput, state.selectedButton]);
 
   return (
     <div className={styles.container}>
@@ -198,9 +175,9 @@ const Billsplitter: React.FC<BillsplitterProps> = (Props) => {
         <InputNumber
           label={Props.inputLabel1}
           icon="dollar"
-          numberInput={BillAmountInput}
+          numberInput={state.billAmountInput}
           onNumberInputChange={handleBillAmountChange}
-          error={BillAmountInputError}
+          error={state.billAmountInputError}
         />
         <TipMenu
           label={Props.tipMenuLabel}
@@ -211,36 +188,41 @@ const Billsplitter: React.FC<BillsplitterProps> = (Props) => {
           buttonContent5={Props.buttonContent5}
           buttonContent6={Props.buttonContent6}
           onButtonClick={handleTipButtonClick}
-          selectedButton={selectedButton}
+          selectedButton={state.selectedButton}
         />
         <InputNumber
           label={Props.inputLabel2}
           icon={"person"}
-          numberInput={NumberOfPersonsInput}
+          numberInput={state.numberOfPersonsInput}
           onNumberInputChange={handleNumberOfPersonsInput}
-          error={NumberOfPersonsInputError}
+          error={state.numberOfPersonsInputError}
         />
       </div>
-      <div className={styles.rigthContainer}>
+      <div className={styles.rightContainer}>
         <div className={styles.tipAmount}>
           <SplitperPerson
             label1={Props.splitLabel1}
             label2={Props.splitLabel2}
-            numberInput={tipPerPerson}
+            numberInput={state.tipPerPerson}
           />
         </div>
         <div className={styles.totalAmount}>
           <SplitperPerson
             label1={Props.splitLabel3}
             label2={Props.splitLabel4}
-            numberInput={totalAmountPerPerson}
+            numberInput={state.totalAmountPerPerson}
           />
         </div>
         <div className={styles.reset}>
-          <Resetbutton name="Reset" onClick={handleReset} inactive={inactive} />
+          <Resetbutton
+            name="Reset"
+            onClick={handleReset}
+            inactive={state.inactive}
+          />
         </div>
       </div>
     </div>
   );
 };
+
 export default Billsplitter;
