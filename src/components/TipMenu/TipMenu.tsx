@@ -90,6 +90,7 @@ const TipMenu: React.FC<TipMenuProps> = (Props) => {
         ))}
         <input
           id="customButton"
+          name="customButton"
           type="number"
           className={styles.customButton} //${selectedButton === buttonContent6 ? styles.selected : ""}`}
           onInput={handleCustomButtonClick}

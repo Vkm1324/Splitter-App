@@ -32,11 +32,11 @@ button:hover{
 @media (max-width: 550px) {
   button { 
     padding: 9px 0px;
-    max-width: 280px;
+    max-width: 100%;
     /* display:flex;  */
   }
   .container{
-    max-width: 310px;
+    max-width: 100%;
     /* margin: 15px; */
   }
 }

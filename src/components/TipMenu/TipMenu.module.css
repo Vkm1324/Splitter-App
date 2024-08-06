@@ -66,12 +66,12 @@
 
 } */
 
-input:focus {
+.customButton:focus {
   outline:2px solid #9FE8DF; 
   /* border:.1px solid #9FE8DF; */
 }
 
-input::placeholder {
+.customButton::placeholder {
   color: #9fb3b2;
 }
  
@@ -101,5 +101,11 @@ input::placeholder {
   font-size: 24px;
   line-height: 35.54px;
  }
+
+.customButton{
+  max-width: 147px;
+  font-size: 24px;
+  line-height: 35.54px;
+}
 
 }

@@ -62,7 +62,7 @@
   @media (max-width: 550px) {
   .container { 
     /* padding: 0px 16px; */
-    max-width: 310px;
+    max-width: 100%;
     /* line-height: 18.14px;
     size: 12.25px; */
     /* display:flex;  */
