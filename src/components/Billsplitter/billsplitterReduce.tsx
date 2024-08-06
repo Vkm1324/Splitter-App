@@ -26,8 +26,10 @@ export const initialState: State = {
   numberOfPersonsInput: 1,
   numberOfPersonsInputError: "",
   selectedButton: "",
+  //TODO  avoid the  tipPerPerson, totalAmountPerPerson
   tipPerPerson: 0.0,
   totalAmountPerPerson: 0.0,
+  // TODOrename it to reset_inactive
   inactive: true,
 };
 
