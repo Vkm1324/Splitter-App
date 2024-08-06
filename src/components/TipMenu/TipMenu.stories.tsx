@@ -14,12 +14,12 @@ import TipMenu from "./TipMenu";
     
 export const Default: Story = {
   args: {
-    buttonContent1: "5%",
+    buttonContent1: "5",
     label: "Select Tip %",
-    buttonContent2: "10%",
-    buttonContent3: "15%",
-    buttonContent4: "20%",
-    buttonContent5: "50%",
+    buttonContent2: "10",
+    buttonContent3: "15",
+    buttonContent4: "20",
+    buttonContent5: "50",
     buttonContent6: "CUSTOM",
   },
 };

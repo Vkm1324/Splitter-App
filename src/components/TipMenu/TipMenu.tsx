@@ -34,10 +34,6 @@ interface TipMenuProps {
    * Function to handle button clicks
    */
   onButtonClick: (value: string) => void;
-  /**
-   * Currently selected button value
-   */
-  selectedButton: string;
 }
 const TipMenu: React.FC<TipMenuProps> = (Props) => {
   const {
@@ -49,7 +45,6 @@ const TipMenu: React.FC<TipMenuProps> = (Props) => {
     buttonContent5,
     buttonContent6,
     onButtonClick,
-    selectedButton,
   } = Props;
 
   const handleClick = (value: string) => {
@@ -62,14 +57,17 @@ const TipMenu: React.FC<TipMenuProps> = (Props) => {
     onButtonClick(value);
   };
 
-  const handleCustomButtonClick = (event) => {
-    const inputValue = event.target!.value;
+  const handleCustomButtonClick = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    const inputValue = event.target.value;
     if (parseFloat(inputValue) <= 0) {
       event.target.value = "";
       return;
     }
     onButtonClick(inputValue);
   };
+
   return (
     <div className={styles.container}>
       <label className={styles.label}>{label}</label>
@@ -80,26 +78,29 @@ const TipMenu: React.FC<TipMenuProps> = (Props) => {
           buttonContent3,
           buttonContent4,
           buttonContent5,
-        ].map((content) => (
+        ].map((tipPercentageValue, index) => (
           <button
-            className={`${styles.gridButton} ${selectedButton === content ? styles.selected : ""}`}
-            onClick={() => handleClick(content)}
+            id={`button-${tipPercentageValue}`}
+            key={index}
+            className={styles.gridButton}
+            value={tipPercentageValue}
+            onClick={() => handleClick(tipPercentageValue)}
           >
-            {content}
+            {tipPercentageValue}%
           </button>
         ))}
         <input
           id="customButton"
           name="customButton"
           type="number"
-          className={styles.customButton} //${selectedButton === buttonContent6 ? styles.selected : ""}`}
+          className={styles.customButton}
           onInput={handleCustomButtonClick}
           placeholder={buttonContent6}
-        ></input>
+        />
       </div>
     </div>
   );
 };
-export default TipMenu;
 
-// color: hsla(183, 100%, 15%, 1);
+export default TipMenu;
+ 

@@ -27,6 +27,7 @@ export const Default: Story = {
     splitLabel2: "/ person",
     splitLabel3: "Total",
     splitLabel4: "/ person",
-    tipMenuLabel:"Select tip %"
+    tipMenuLabel: "Select tip %",
+    
   },
 };

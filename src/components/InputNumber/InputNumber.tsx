@@ -1,4 +1,3 @@
-import React, { useId } from "react";
 import "../../App.css";
 import styles from "./InputNumber.module.css";
 import dollar from "./assests/dollar.svg";
@@ -9,6 +8,10 @@ export interface InputNumberProps {
    * Label for the number input field
    */
   label: string;
+  /**
+   * Id  for the number input field
+   */
+  inputId: string;
   /**
    * Icon
    */
@@ -32,11 +35,10 @@ const InputNumber: React.FC<InputNumberProps> = ({
   label,
   icon,
   numberInput,
+  inputId,
   onNumberInputChange,
   error,
-}) => {
-  const uniqueId = useId();
-  const inputId = uniqueId + "number-input";
+}) => { 
   const iconSrc = icon === "dollar" ? dollar : person;
   const inputContStyle = error
     ? styles.inputContainer + " " + styles.errorOutline
@@ -58,7 +60,7 @@ return (
         placeholder="0.00"
       />
     </div>
-    {<div className={styles.errorMsg}>{error}</div>}
+    {error && <div className={styles.errorMsg}>{error}</div>}
   </div>
 );
 };

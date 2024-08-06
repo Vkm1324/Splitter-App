@@ -56,15 +56,23 @@
   /* padding: .5rem 0rem; */
   font-size: 2rem;
   letter-spacing: 1px;
-
 }
-/* 
-.customButton:click{
-  
-  color: hsla(183, 100%, 15%, 1);
-  background-color:#9FE8DF;
 
-} */
+/* .gridButton::after() */
+
+.gridButton:active{
+  background-color:black; 
+  /* #26C2AD; */
+  color: hsla(183, 100%, 15%, 1);
+  border-color: #26C2AD;
+}
+
+
+.customButton:active{
+  /* background-color: #26C2AD; */
+  color: hsla(183, 100%, 15%, 1);
+  border-color: #26C2AD;
+}
 
 .customButton:focus {
   outline:2px solid #9FE8DF; 
@@ -75,12 +83,7 @@
   color: #9fb3b2;
 }
  
-.selected {
-  background-color: #26C2AD;
-  color: hsla(183, 100%, 15%, 1);
-  border-color: #26C2AD;
-}
-
+ 
 /* Mobile (0-550px) */
 @media (max-width: 550px) {
   .container { 

@@ -16,7 +16,8 @@ export const TipAmount: Story = {
   args: {
     label1: "Tip Amount",
     label2: "/ person",
-    numberInput:5
+    numberInput: 5,
+    idName: "tipAmountPerPerson",
   },
 };
 
@@ -24,6 +25,7 @@ export const Total: Story = {
   args: {
     label1: "Total",
     label2: "/ person",
-    numberInput: 15
+    numberInput: 15,
+    idName: "totalAmountPerPerson",
   },
 };

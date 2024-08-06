@@ -8,18 +8,14 @@ interface ResetbuttonProps {
   /**
    * Function to be called when the button is clicked
    */
-  onClick: () => void;
-  /**
-   * State to determine if the button is inactive
-   */
-  inactive: boolean;
+  onClick: () => void; 
 }
 const Resetbutton: React.FC<ResetbuttonProps> = (Props) => {
   return (
     <div className={styles.container}>
       <button
-        className={Props.inactive ? styles.inactive : ""}
-        disabled={Props.inactive}
+        // className={inactive ? styles.inactive : ""}
+        // disabled={inactive}
         onClick={Props.onClick}
       >
         {Props.name}

@@ -1,0 +1,29 @@
+const handleBillAmountChange = (event) => {
+  const billAmountInput = parseFloat(event.target.value);
+  dispatch({ type: "SET_BILL_AMOUNT_INPUT", payload: billAmountInput });
+  calculateAndDispatch(billAmountInput, state.numberOfPersonsInput, state.selectedButton);
+};
+
+const handleNumberOfPersonsChange = (event) => {
+  const numberOfPersonsInput = parseInt(event.target.value, 10);
+  dispatch({ type: "SET_NUMBER_OF_PERSONS_INPUT", payload: numberOfPersonsInput });
+  calculateAndDispatch(state.billAmountInput, numberOfPersonsInput, state.selectedButton);
+};
+
+const handleButtonClick = (buttonValue) => {
+  dispatch({ type: "SET_SELECTED_BUTTON", payload: buttonValue });
+  calculateAndDispatch(state.billAmountInput, state.numberOfPersonsInput, buttonValue);
+};
+
+const calculateAndDispatch = (billAmount, numberOfPersons, selectedButton) => {
+  const tipPercentage = parseFloat(selectedButton) / 100;
+  const totalTip = billAmount * tipPercentage;
+  const tipPerPerson =
+    numberOfPersons > 0 && totalTip > 0 ? totalTip / numberOfPersons : 0.0;
+  const totalAmountPerPerson =
+    billAmount > 0 ? billAmount / numberOfPersons + tipPerPerson : 0.0;
+
+  dispatch({ type: "SET_TIP_PER_PERSON", payload: tipPerPerson });
+  dispatch({ type: "SET_TOTAL_AMOUNT_PER_PERSON", payload: totalAmountPerPerson });
+  dispatch({ type: "SET_INACTIVE", payload: false });
+};
