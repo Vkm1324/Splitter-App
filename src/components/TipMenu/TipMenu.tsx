@@ -47,19 +47,44 @@ const TipMenu: React.FC<TipMenuProps> = (Props) => {
     onButtonClick,
   } = Props;
 
-  const handleClick = (value: string) => {
-    const customButtonInput = document.getElementById(
-      "customButton"
-    ) as HTMLInputElement;
-    if (customButtonInput) {
-      customButtonInput.value = "";
-    }
-    onButtonClick(value);
-  };
+const handleClick = (value: string) => {
+  console.log(`Button clicked: ${value}`);
+
+  const customButtonInput = document.getElementById(
+    "customButton"
+  ) as HTMLInputElement;
+  if (customButtonInput) {
+    customButtonInput.value = "";
+  }
+
+  // Remove previously selected class
+  const previouslySelected = document.querySelector(`.${styles.selected}`);
+  if (previouslySelected) {
+    console.log("Removing selected class from:", previouslySelected);
+    previouslySelected.classList.remove(styles.selected);
+  }
+
+  // Add selected class to the clicked button
+  const buttonToSelect = document.querySelector(`#button-${value}`);
+  if (buttonToSelect) {
+    console.log("Adding selected class to:", buttonToSelect);
+    buttonToSelect.classList.add(styles.selected);
+  } else {
+    console.error(`Button with ID #button-${value} not found.`);
+  }
+
+  onButtonClick(value);
+};
+
 
   const handleCustomButtonClick = (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
+      const previouslySelected = document.querySelector(`.${styles.selected}`);
+      if (previouslySelected) {
+        console.log("Removing selected class from:", previouslySelected);
+        previouslySelected.classList.remove(styles.selected);
+      }
     const inputValue = event.target.value;
     if (parseFloat(inputValue) <= 0) {
       event.target.value = "";

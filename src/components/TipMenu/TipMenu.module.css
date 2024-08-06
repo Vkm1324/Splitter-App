@@ -12,7 +12,7 @@
 
 .label {
   max-width: 10.5rem;
-  padding-left: 14px;
+  /* padding-left: 14px; */
   color: hsla(184, 7%, 39%, 1);
 }
 
@@ -56,31 +56,33 @@
   /* padding: .5rem 0rem; */
   font-size: 2rem;
   letter-spacing: 1px;
+  font-weight: 700;
 }
 
 /* .gridButton::after() */
 
-.gridButton:active{
-  background-color:black; 
-  /* #26C2AD; */
+.selected{
+  background-color:#26C2AD;
   color: hsla(183, 100%, 15%, 1);
   border-color: #26C2AD;
 }
 
-
-.customButton:active{
-  /* background-color: #26C2AD; */
+/* .gridButton:focus{
+  background-color:#26C2AD;
   color: hsla(183, 100%, 15%, 1);
   border-color: #26C2AD;
-}
+} */
 
 .customButton:focus {
   outline:2px solid #9FE8DF; 
+  color: hsla(183, 100%, 15%, 1);
+  border-color: #26C2AD;
   /* border:.1px solid #9FE8DF; */
 }
 
 .customButton::placeholder {
-  color: #9fb3b2;
+  color: hsla(184, 7%, 39%, 1);
+
 }
  
  

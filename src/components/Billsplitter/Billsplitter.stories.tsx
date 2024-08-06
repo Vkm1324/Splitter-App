@@ -15,14 +15,14 @@ import Billsplitter from "./Billsplitter";
     
 export const Default: Story = {
   args: {
-    inputLabel1: "BILL",
+    inputLabel1: "Bill",
     inputLabel2: "Number of people",
-    buttonContent1: "5%",
-    buttonContent2: "10%",
-    buttonContent3: "15%",
-    buttonContent4: "25%",
-    buttonContent5: "50%",
-    buttonContent6: "CUSTOM",
+    buttonContent1: "5",
+    buttonContent2: "10",
+    buttonContent3: "15",
+    buttonContent4: "25",
+    buttonContent5: "50",
+    buttonContent6: "Custom",
     splitLabel1: "Tip Amount",
     splitLabel2: "/ person",
     splitLabel3: "Total",

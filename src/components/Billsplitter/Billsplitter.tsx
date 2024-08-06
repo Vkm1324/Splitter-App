@@ -149,30 +149,41 @@ const Billsplitter: React.FC<BillsplitterProps> = (Props) => {
     };
 
   const handleTipButtonClick = (value: string) => { 
-    console.log(value);
+    const tipPercentage = parseFloat(value)/100;
+    console.log(tipPercentage);
+    dispatch({type:"SET_SELECTED_TIP_VALUE",payload:tipPercentage})
   };
 
   const handleReset = () => {
     dispatch({ type: "RESET" });
   };
 
-  function calculateTipPerPerson(billAmountInput: number, numberOfPersonsInput: number, selectedTipValue: string): number {
+  function calculateTipPerPerson(
+    billAmountInput: number,
+    numberOfPersonsInput: number,
+    tipPercentage: number
+  ): number {
     if (billAmountInput > 0) {
-      return (billAmountInput * (+selectedTipValue)) / (100 * numberOfPersonsInput);
-    }
-    else return 0;
+      return (
+        (billAmountInput * tipPercentage) / numberOfPersonsInput);
+    } else return 0;
   }
   function calculateTotalPerPerson(
     billAmountInput: number,
     numberOfPersonsInput: number,
-    selectedTipValue: string
+    tipPercentage: number
   ): number {
     if (billAmountInput > 0) {
-      return billAmountInput / numberOfPersonsInput + calculateTipPerPerson(billAmountInput,
-    numberOfPersonsInput,
-    selectedTipValue)
+      return (
+        billAmountInput / numberOfPersonsInput +
+        calculateTipPerPerson(
+          billAmountInput,
+          numberOfPersonsInput,
+          tipPercentage
+        )
+      );
     }
-     return 0;
+    return 0;
   }
 
   return (
@@ -214,7 +225,7 @@ const Billsplitter: React.FC<BillsplitterProps> = (Props) => {
             numberInput={calculateTipPerPerson(
               state.billAmountInput,
               state.numberOfPersonsInput,
-              state.selectedTipValue
+              +state.selectedTipValue
             )}
           />
         </div>
@@ -226,7 +237,7 @@ const Billsplitter: React.FC<BillsplitterProps> = (Props) => {
             numberInput={calculateTotalPerPerson(
               state.billAmountInput,
               state.numberOfPersonsInput,
-              state.selectedTipValue
+              +state.selectedTipValue
             )}
           />
         </div>
