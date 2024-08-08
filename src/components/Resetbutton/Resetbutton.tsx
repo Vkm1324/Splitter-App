@@ -10,12 +10,15 @@ interface ResetbuttonProps {
    */
   onClick: () => void; 
 }
+
+
 const Resetbutton: React.FC<ResetbuttonProps> = (Props) => {
   return (
     <div className={styles.container}>
       <button
-        // className={inactive ? styles.inactive : ""}
-        // disabled={inactive}
+        className={`${styles.reset} ${styles.disabled}`}
+        // disabled={true}
+        id={Props.name}
         onClick={Props.onClick}
       >
         {Props.name}

@@ -24,11 +24,13 @@ export interface InputNumberProps {
    * Error to display when number is negative
    */
 
-  error?: string;
+  error: () => string;
   /**
    * Function to handle changes to the input value
    */
   onNumberInputChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+// tab-index value for input
+  tabIndexValue: number;
 }
 
 const InputNumber: React.FC<InputNumberProps> = ({
@@ -38,31 +40,29 @@ const InputNumber: React.FC<InputNumberProps> = ({
   inputId,
   onNumberInputChange,
   error,
-}) => { 
+  tabIndexValue,
+}) => {
   const iconSrc = icon === "dollar" ? dollar : person;
-  const inputContStyle = error
-    ? styles.inputContainer + " " + styles.errorOutline
-    : styles.inputContainer;
-
-return (
-  <div className={styles.container}>
-    <label className={styles.label} htmlFor={inputId}>
-      {label}
-    </label>
-    <div className={inputContStyle}>
-      <img className={styles.img} src={iconSrc} alt="icon" />
-      <input
-        type="number"
-        id={inputId}
-        value={numberInput}
-        onInput={onNumberInputChange}
-        className={styles.numberInput}
-        placeholder="0.00"
-      />
+  return (
+    <div className={styles.container}>
+      <label className={styles.label} htmlFor={inputId}>
+        {label}
+      </label>
+      <div className={styles.inputContainer}>
+        <img className={styles.img} src={iconSrc} alt="icon" />
+        <input
+          type="number"
+          id={inputId}
+          value={numberInput}
+          tabIndex={tabIndexValue}
+          onChange={onNumberInputChange}
+          className={styles.numberInput}
+          placeholder="0.00"
+        />
+      </div>
+      <div className={styles.errorMsg}>{error()}</div>
     </div>
-    {error && <div className={styles.errorMsg}>{error}</div>}
-  </div>
-);
+  );
 };
 
 export default InputNumber;

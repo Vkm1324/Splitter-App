@@ -27,7 +27,10 @@ export const Default: Story = {
     splitLabel2: "/ person",
     splitLabel3: "Total",
     splitLabel4: "/ person",
-    tipMenuLabel: "Select tip %",
+    tipMenuLabel: "Select Tip %",
+    title1: "SPLITTER",
+    idForBill: "billAmoutId",
+    idForResetButton:"RESET"
     
   },
 };

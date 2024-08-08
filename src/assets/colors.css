@@ -1,5 +1,4 @@
 :root {
-  display: flex; 
   --base-green: #00a859; /* Replace with your base green color */
   --dark-green: #004d00; /* Replace with your dark green color */
   --bg-shade: #f0f0f0;   /* Replace with your background shade color */
@@ -8,9 +7,4 @@
   --error: #d9534f;      /* Replace with your error color */
   --white: #ffffff;      /* Replace with white color */
   --stroke-green: #005c00; /* Replace with your stroke green color */
-}
-
-body {
-  margin: 0;
-  display: flex; 
 }

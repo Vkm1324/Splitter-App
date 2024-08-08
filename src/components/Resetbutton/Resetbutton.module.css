@@ -1,12 +1,10 @@
-button{
+.reset{
     width: 28.375rem;
     padding: 13px 0px;
     font-size: 1.5rem;
     font-family:"Space Mono" ;
     line-height: 35.54px;
-    letter-spacing: 10%;
-    /* when button is active ,text-color */
-    /* hsla(172, 68%, 45%, 1); */
+    letter-spacing: 2px; 
     text-align: center;
     text-wrap: wrap;
     border: none;
@@ -14,23 +12,26 @@ button{
     border-radius: 7px;
     background: #26C2AD;
     color: hsla(183, 100%, 15%, 1);
-
 }
 
-button:hover{
+.reset:hover{
      cursor: pointer;
    background:#9FE8DF;
 }
-
-.inactive{
-  cursor:pointer;
-    /* set this when button becomes inactive */ 
-    background: hsla(183, 79%, 24%, 1);
-    
+ 
+.disabled{
+  /* background-color: gray; Color when the button is disabled */
+  background: hsla(183, 79%, 24%, 1);
+  /* color: white; */
+  cursor: not-allowed; /* Change cursor to indicate the button is disabled */
 }
-
+.disabled:hover{
+  background: hsla(183, 79%, 24%, 1);
+  /* Change cursor to indicate the button is disabled */
+  cursor:default
+}
 @media (max-width: 550px) {
-  button { 
+  .reset { 
     padding: 9px 0px;
     max-width: 100%;
     /* display:flex;  */

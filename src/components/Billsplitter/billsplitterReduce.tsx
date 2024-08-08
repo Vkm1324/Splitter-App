@@ -11,7 +11,7 @@ export interface State {
 }
 
 export const initialState: State = {
-  billAmountInput: 0.0, 
+  billAmountInput:0, 
   numberOfPersonsInput: 1, 
   selectedTipValue: 0,
 };
