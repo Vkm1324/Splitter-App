@@ -1,5 +1,7 @@
-import React from 'react';
-import styles from './Resetbutton.module.css';
+import React, { useRef } from "react";
+import styles from "./Resetbutton.module.css";
+import "../../index.css";
+
 interface ResetbuttonProps {
   /**
    * Name of the button
@@ -8,16 +10,18 @@ interface ResetbuttonProps {
   /**
    * Function to be called when the button is clicked
    */
-  onClick: () => void; 
+  onClick: () => void;
 }
 
-
 const Resetbutton: React.FC<ResetbuttonProps> = (Props) => {
+  //  ref for the reset-button element 
+  const resetButtonRef = useRef<HTMLButtonElement>(null);
+
   return (
     <div className={styles.container}>
       <button
+        ref={resetButtonRef} 
         className={`${styles.reset} ${styles.disabled}`}
-        // disabled={true}
         id={Props.name}
         onClick={Props.onClick}
       >
@@ -26,4 +30,5 @@ const Resetbutton: React.FC<ResetbuttonProps> = (Props) => {
     </div>
   );
 };
+
 export default Resetbutton;

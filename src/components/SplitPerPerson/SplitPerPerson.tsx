@@ -1,5 +1,6 @@
 import React from 'react';
 import "../../App.css";
+// import "../../index.css";
 import styles from './SplitPerPerson.module.css';
 interface SplitPerPersonProps {
   /**
@@ -22,7 +23,7 @@ const SplitPerPerson: React.FC<SplitPerPersonProps> = (Props) => {
            type="string"
            value={'$'+numberInput.toFixed(2)}
            className={styles.numberInput}
-           placeholder="$0.00"
+           placeholder="$ -.--/"
            readOnly
          />
        </div>

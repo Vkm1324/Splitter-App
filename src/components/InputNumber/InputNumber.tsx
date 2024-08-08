@@ -1,4 +1,6 @@
+import React, { RefObject } from "react";
 import "../../App.css";
+import "../../index.css";
 import styles from "./InputNumber.module.css";
 import dollar from "./assests/dollar.svg";
 import person from "./assests/person.svg";
@@ -9,7 +11,7 @@ export interface InputNumberProps {
    */
   label: string;
   /**
-   * Id  for the number input field
+   * Id for the number input field
    */
   inputId: string;
   /**
@@ -19,18 +21,28 @@ export interface InputNumberProps {
   /**
    * Number fed to the input field
    */
-  numberInput: number;
+  numberInput: string;
   /**
    * Error to display when number is negative
    */
-
   error: () => string;
   /**
    * Function to handle changes to the input value
    */
   onNumberInputChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-// tab-index value for input
+  /**
+   * Tab index value for input
+   */
   tabIndexValue: number;
+  /**
+   * Input reference
+   */
+  inputRef: RefObject<HTMLInputElement>;
+
+  /**
+   * Placeholder text for the input field
+   */
+  placeHolder: string;
 }
 
 const InputNumber: React.FC<InputNumberProps> = ({
@@ -41,8 +53,11 @@ const InputNumber: React.FC<InputNumberProps> = ({
   onNumberInputChange,
   error,
   tabIndexValue,
+  placeHolder,
+  inputRef,
 }) => {
   const iconSrc = icon === "dollar" ? dollar : person;
+
   return (
     <div className={styles.container}>
       <label className={styles.label} htmlFor={inputId}>
@@ -51,13 +66,14 @@ const InputNumber: React.FC<InputNumberProps> = ({
       <div className={styles.inputContainer}>
         <img className={styles.img} src={iconSrc} alt="icon" />
         <input
-          type="number"
+          type="text"
           id={inputId}
           value={numberInput}
           tabIndex={tabIndexValue}
           onChange={onNumberInputChange}
           className={styles.numberInput}
-          placeholder="0.00"
+          placeholder={placeHolder}
+          ref={inputRef}
         />
       </div>
       <div className={styles.errorMsg}>{error()}</div>

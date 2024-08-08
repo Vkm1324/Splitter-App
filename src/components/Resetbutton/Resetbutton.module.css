@@ -1,5 +1,6 @@
 .reset{
-    width: 28.375rem;
+    max-width: 28.375rem;
+    width: 100%;
     padding: 13px 0px;
     font-size: 1.5rem;
     font-family:"Space Mono" ;
@@ -10,34 +11,43 @@
     border: none;
     font-weight: 700;
     border-radius: 7px;
+    /* TODO clarify the color of background  */
     background: #26C2AD;
-    color: hsla(183, 100%, 15%, 1);
+    /* background: var(--base-green); */
+    /* color:#00494D; */
+     /* color: hsla(183, 100%, 15%, 1); */
+    color: var(--dark-green);
 }
 
 .reset:hover{
-     cursor: pointer;
-   background:#9FE8DF;
+     cursor: pointer; 
+   background:var(--base-green);
 }
  
-.disabled{
-  /* background-color: gray; Color when the button is disabled */
+.disabled{ 
+  
+    /* TODO clarify the color of background  */
   background: hsla(183, 79%, 24%, 1);
-  /* color: white; */
-  cursor: not-allowed; /* Change cursor to indicate the button is disabled */
+    /* 0D686D; */
+    
+    /* Change cursor to indicate the button is disabled */
+  cursor:default; 
 }
 .disabled:hover{
+    /* TODO clarify the color of background  */
   background: hsla(183, 79%, 24%, 1);
+  /* 0D686D; */
+  /* background: var(--dark-green); */
+
   /* Change cursor to indicate the button is disabled */
   cursor:default
 }
 @media (max-width: 550px) {
   .reset { 
     padding: 9px 0px;
-    max-width: 100%;
-    /* display:flex;  */
+    max-width: 100%; 
   }
   .container{
-    max-width: 100%;
-    /* margin: 15px; */
+    max-width: 100%; 
   }
 }

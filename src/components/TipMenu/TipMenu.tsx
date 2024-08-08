@@ -1,41 +1,22 @@
-import React from "react";
+import React, { useState, useRef } from "react";
 import "../../App.css";
+import "../../index.css";
 import styles from "./TipMenu.module.css";
+
 interface TipMenuProps {
-  /**
-   * Label for the number input field
-   */
   label: string;
-  /**
-   * buttonContent for the 1st button field
-   */
   buttonContent1: string;
-  /**
-   * buttonContent for the 2st button field
-   */
   buttonContent2: string;
-  /**
-   * buttonContent for the 3st button field
-   */
   buttonContent3: string;
-  /**
-   * buttonContent for the 4st button field
-   */
   buttonContent4: string;
-  /**
-   * buttonContent for the 5st button field
-   */
   buttonContent5: string;
-  /**
-   * buttonContent for the 6st button field
-   */
   buttonContent6: string;
-  /**
-   * Function to handle button clicks
-   */
   onButtonClick: (value: string) => void;
+  // Optional prop for default selected value
+  defaultSelected?: string;
 }
-const TipMenu: React.FC<TipMenuProps> = (Props) => {
+
+const TipMenu: React.FC<TipMenuProps> = (props) => {
   const {
     label,
     buttonContent1,
@@ -45,51 +26,37 @@ const TipMenu: React.FC<TipMenuProps> = (Props) => {
     buttonContent5,
     buttonContent6,
     onButtonClick,
-  } = Props;
+    // Default to buttonContent1 if not provided
+    defaultSelected = buttonContent1,
+  } = props;
 
-const handleClick = (value: string) => {
-  console.log(`Button clicked: ${value}`);
+  const [selectedValue, setSelectedValue] = useState<string>(defaultSelected);
+  const [customSelected, setCustomSelected] = useState<boolean>(false);
+  //   ref for the custom input
+  const customButtonRef = useRef<HTMLInputElement>(null);
+  // onButtonClick(defaultSelected);
+  const handleClick = (value: string) => {
+    console.log(`Button clicked: ${value}`);
+    setSelectedValue(value);
+    setCustomSelected(false);
 
-  const customButtonInput = document.getElementById(
-    "customButton"
-  ) as HTMLInputElement;
-  if (customButtonInput) {
-    customButtonInput.value = "";
-  }
+    if (customButtonRef.current) {
+      customButtonRef.current.value = "";
+    }
 
-  // Remove previously selected class
-  const previouslySelected = document.querySelector(`.${styles.selected}`);
-  if (previouslySelected) {
-    console.log("Removing selected class from:", previouslySelected);
-    previouslySelected.classList.remove(styles.selected);
-  }
-
-  // Add selected class to the clicked button
-  const buttonToSelect = document.querySelector(`#button-${value}`);
-  if (buttonToSelect) {
-    console.log("Adding selected class to:", buttonToSelect);
-    buttonToSelect.classList.add(styles.selected);
-  } else {
-    console.error(`Button with ID #button-${value} not found.`);
-  }
-
-  onButtonClick(value);
-};
-
+    onButtonClick(value);
+  };
 
   const handleCustomButtonClick = (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
-      const previouslySelected = document.querySelector(`.${styles.selected}`);
-      if (previouslySelected) {
-        console.log("Removing selected class from:", previouslySelected);
-        previouslySelected.classList.remove(styles.selected);
-      }
+    setCustomSelected(true);
     const inputValue = event.target.value;
     if (parseFloat(inputValue) <= 0) {
       event.target.value = "";
       return;
     }
+    setSelectedValue(inputValue);
     onButtonClick(inputValue);
   };
 
@@ -107,7 +74,7 @@ const handleClick = (value: string) => {
           <button
             id={`button-${tipPercentageValue}`}
             key={index}
-            className={styles.gridButton}
+            className={`${styles.gridButton} ${selectedValue === tipPercentageValue ? styles.selected : ""}`}
             value={tipPercentageValue}
             onClick={() => handleClick(tipPercentageValue)}
           >
@@ -115,17 +82,17 @@ const handleClick = (value: string) => {
           </button>
         ))}
         <input
-          id="customButton"
+          ref={customButtonRef}  
           name="customButton"
-          type="number"
-          className={styles.customButton}
-          onInput={handleCustomButtonClick}
+          type="number" 
+          className={`${styles.customButton} ${customSelected ? styles.customButtonselected : ""}`}
+          onChange={handleCustomButtonClick}  
           placeholder={buttonContent6}
         />
       </div>
     </div>
   );
+  
 };
 
 export default TipMenu;
- 

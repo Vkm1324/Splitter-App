@@ -1,8 +1,9 @@
-import React, { useReducer } from "react";
+import React, { useReducer, useRef } from "react";
 import styles from "./Billsplitter.module.css";
 import tipstyles from "../TipMenu/TipMenu.module.css";
 import resetStyles from "../Resetbutton/Resetbutton.module.css";
 import "../../App.css";
+import "../../index.css";
 import InputNumber from "../InputNumber/InputNumber";
 import TipMenu from "../TipMenu/TipMenu";
 import SplitperPerson from "../SplitPerPerson/SplitPerPerson";
@@ -13,7 +14,7 @@ import { initialState, reducer } from "./billsplitterReduce";
  * Props for the BillsplitterProps component.
  */
 export interface BillsplitterProps {
-  title1: string;
+  title: string;
   inputLabel1: string;
   BillAmountInput1: number;
   inputLabel2: string;
@@ -39,22 +40,26 @@ export interface BillsplitterProps {
 const Billsplitter: React.FC<BillsplitterProps> = (Props) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
+  // Create a ref for the billInput element
+  const billAmountInput = useRef<HTMLInputElement>(null);
 
+  // Create a ref for the number of people input element
+  const numberOfPeopleInput = useRef<HTMLInputElement>(null);
   const handleBillAmountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     const numberValue = parseFloat(value);
     if (!isNaN(numberValue)) {
       dispatch({
         type: "SET_BILL_AMOUNT",
-        payload: parseFloat(numberValue.toFixed(2)),
+        payload: (numberValue.toString()),
       });
     } else {
-      dispatch({ type: "SET_BILL_AMOUNT", payload: 0.0 });
+      dispatch({ type: "SET_BILL_AMOUNT", payload: "0.0" });
     }
   };
 
   const getBillErrorMessage = () => {
-    if (state.billAmountInput < 0) {
+    if (+state.billAmountInput < 0) {
       return "Amount cannot be negative";
     }
     return "";
@@ -66,15 +71,15 @@ const Billsplitter: React.FC<BillsplitterProps> = (Props) => {
     const value = e.target.value;
     const numberValue = parseFloat(value);
     if (!isNaN(numberValue) && numberValue > 0) {
-      dispatch({ type: "SET_NUMBER_OF_PERSONS", payload: numberValue });
+      dispatch({ type: "SET_NUMBER_OF_PERSONS", payload: numberValue.toString() });
       updateResetButtonState(false);
     } else {
-      dispatch({ type: "SET_NUMBER_OF_PERSONS", payload: 1 });
+      dispatch({ type: "SET_NUMBER_OF_PERSONS", payload: "1" });
     }
   };
 
   const getPeopleErrorMessage = () => {
-    if (state.numberOfPersonsInput < 1) {
+    if (+state.numberOfPersonsInput < 1) {
       return "People cannot be less than 1";
     }
     return "";
@@ -82,7 +87,7 @@ const Billsplitter: React.FC<BillsplitterProps> = (Props) => {
 
   const handleTipButtonClick = (value: string) => {
     const tipPercentage = parseFloat(value) / 100;
-    dispatch({ type: "SET_SELECTED_TIP_VALUE", payload: tipPercentage });
+    dispatch({ type: "SET_SELECTED_TIP_VALUE", payload: tipPercentage.toString() });
     updateResetButtonState(false);
   };
 
@@ -98,9 +103,11 @@ const Billsplitter: React.FC<BillsplitterProps> = (Props) => {
       previouslySelected.classList.remove(tipstyles.selected);
     }
     dispatch({ type: "RESET" });
-    const billAmountInput = document.getElementById(Props.idForBill);
-    if (billAmountInput) {
-      billAmountInput.focus();
+    const element = document.querySelector(
+      '[tabindex="0"]'
+    ) as HTMLInputElement;
+    if (element) {
+      element.focus();
     }
     updateResetButtonState(true);
   };
@@ -151,7 +158,7 @@ const Billsplitter: React.FC<BillsplitterProps> = (Props) => {
   return (
     <div className={styles.mainContainer}>
       <div className={styles.titleContainer}>
-        <label className={styles.title}>{Props.title1}</label>
+        <label className={styles.title}>{Props.title}</label>
       </div>
       <div className={styles.contentContainer}>
         <div className={styles.leftContainer}>
@@ -160,10 +167,11 @@ const Billsplitter: React.FC<BillsplitterProps> = (Props) => {
             label={Props.inputLabel1}
             icon="dollar"
             tabIndexValue={0}
+            inputRef={billAmountInput}
             numberInput={state.billAmountInput}
             onNumberInputChange={handleBillAmountChange}
             error={() => getBillErrorMessage()}
-          />
+            placeHolder={"0.00"} />
           <TipMenu
             label={Props.tipMenuLabel}
             buttonContent1={Props.buttonContent1}
@@ -182,7 +190,8 @@ const Billsplitter: React.FC<BillsplitterProps> = (Props) => {
             numberInput={state.numberOfPersonsInput}
             onNumberInputChange={handleNumberOfPersonsInput}
             error={() => getPeopleErrorMessage()}
-          />
+            inputRef={numberOfPeopleInput}
+            placeHolder={"1"} />
         </div>
         <div className={styles.rightContainer}>
           <div className={styles.tipAmount}>
@@ -191,8 +200,8 @@ const Billsplitter: React.FC<BillsplitterProps> = (Props) => {
               label1={Props.splitLabel1}
               label2={Props.splitLabel2}
               numberInput={calculateTipPerPerson(
-                state.billAmountInput,
-                state.numberOfPersonsInput,
+                +state.billAmountInput,
+                +state.numberOfPersonsInput,
                 +state.selectedTipValue
               )}
             />
@@ -203,8 +212,8 @@ const Billsplitter: React.FC<BillsplitterProps> = (Props) => {
               label1={Props.splitLabel3}
               label2={Props.splitLabel4}
               numberInput={calculateTotalPerPerson(
-                state.billAmountInput,
-                state.numberOfPersonsInput,
+                +state.billAmountInput,
+                +state.numberOfPersonsInput,
                 +state.selectedTipValue
               )}
             />

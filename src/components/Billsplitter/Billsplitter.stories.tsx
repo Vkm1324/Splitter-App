@@ -28,7 +28,7 @@ export const Default: Story = {
     splitLabel3: "Total",
     splitLabel4: "/ person",
     tipMenuLabel: "Select Tip %",
-    title1: "SPLITTER",
+    title: "SPLITTER",
     idForBill: "billAmoutId",
     idForResetButton:"RESET"
     
