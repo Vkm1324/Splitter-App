@@ -54,6 +54,7 @@
   cursor: pointer; 
   text-wrap: wrap;
   /* padding: .5rem 0rem; */
+  /* border: 2px hidden white;  */
   font-size: 2rem;
   letter-spacing: 1px;
   font-weight: 700;

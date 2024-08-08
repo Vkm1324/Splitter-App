@@ -60,14 +60,12 @@ const handleClick = (value: string) => {
   // Remove previously selected class
   const previouslySelected = document.querySelector(`.${styles.selected}`);
   if (previouslySelected) {
-    console.log("Removing selected class from:", previouslySelected);
     previouslySelected.classList.remove(styles.selected);
   }
 
   // Add selected class to the clicked button
   const buttonToSelect = document.querySelector(`#button-${value}`);
   if (buttonToSelect) {
-    console.log("Adding selected class to:", buttonToSelect);
     buttonToSelect.classList.add(styles.selected);
   } else {
     console.error(`Button with ID #button-${value} not found.`);

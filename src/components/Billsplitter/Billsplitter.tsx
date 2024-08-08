@@ -13,7 +13,7 @@ import { initialState, reducer } from "./billsplitterReduce";
  * Props for the BillsplitterProps component.
  */
 export interface BillsplitterProps {
-  title1: string;
+  title: string;
   inputLabel1: string;
   BillAmountInput1: number;
   inputLabel2: string;
@@ -151,7 +151,7 @@ const Billsplitter: React.FC<BillsplitterProps> = (Props) => {
   return (
     <div className={styles.mainContainer}>
       <div className={styles.titleContainer}>
-        <label className={styles.title}>{Props.title1}</label>
+        <label className={styles.title}>{Props.title}</label>
       </div>
       <div className={styles.contentContainer}>
         <div className={styles.leftContainer}>

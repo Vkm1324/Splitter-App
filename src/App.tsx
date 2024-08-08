@@ -25,7 +25,10 @@ function App() {
         idFotsplitter2={""}
         idForBill={""}
         idForNumberOfPeople={""}
-      ></Billsplitter>
+        idForResetButton='RESET'
+        title={'SPLITTER'}      >
+        
+        </Billsplitter>
     </>
   );
 }
