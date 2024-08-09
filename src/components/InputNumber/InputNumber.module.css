@@ -1,11 +1,10 @@
 .container {
   background-color: white;
+  width: 100%;
   max-width: 32.75rem;
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  /* --error-color: #b57b6d;
-  --input-field-color: #f3f8fb; */
+  gap: 12px; 
   font-family: "Space Mono";
 }
 
@@ -16,16 +15,13 @@
   background-color:hsla(203, 50%, 97%, 1);
    /* var(--input-field-color); */
   border-radius: 6px;
-  max-width: 524.7px;
+  max-width: calc(100%)
 }
 
 .inputContainer:focus-within {
   outline: 3px solid #5aa79d;
 }
 
-.inputContainer.errorOutline {
-  outline: 3px solid var(--error-color);
-}
 
 .iconContainer {
   display: flex;
@@ -35,9 +31,12 @@
 
 .numberInput {
   flex: 2;
-  padding: 8px 20px;
+  padding: 8px 0px;
+  padding-right: 15px;
   text-align: right;
-  background-color: var(--input-field-color);
+  width: calc(100% );
+    background: hsla(203, 50%, 97%, 1);
+  /* background-color: var(--input-field-color); */
   border-radius: 6px;
   font-size: 2rem;
   border: none;
@@ -64,6 +63,12 @@
   letter-spacing: 0.1em;
 }
 
+
+/* TODO create a outline for input div when error  */
+.inputContainer.errorOutline {
+  outline: 3px solid red;
+}
+
 .errorMsg {
   width: max-content;
   font-family: "Space Mono";
@@ -74,7 +79,6 @@
   letter-spacing: 0.1em;
   min-height: 1.9rem;
   text-align: end;
-  /* border: 2px solid red;  */
 }
 
 img{
@@ -91,21 +95,29 @@ input::-webkit-inner-spin-button {
 @media (max-width: 550px) {
   .container { 
     /* padding: 0px 32px; */
-    padding-top: 32px;
+    max-width: 20rem;
+    width: 100%;
+    padding-top: 2rem;
   }
 
   .numberInput {
-    font-size: 1.0rem;
+    font-size: 1.5rem;
+    line-height: 35.54px;
+    padding: 8px 0px;
+    padding-right: 15px;
   }
 
   .label,
   .errorMsg {
-    font-size: 1rem;
+    font-size: 0.875rem;
+    line-height: 1.3rem;
+    letter-spacing: 0.0875rem;
+    font-weight: 700;
   }
 }
 
 /* Tablet (550-1100px) */
-@media (min-width: 551px) and (max-width: 1100px) {
+/* @media (min-width: 551px) and (max-width: 1100px) {
   .container {
     width: 100%;
   }
@@ -118,12 +130,13 @@ input::-webkit-inner-spin-button {
   .errorMsg {
     font-size: 1.1rem;
   }
-}
+} */
 
 /* Laptop (1100-1500px) */
 @media (min-width: 1101px) and (max-width: 1500px) {
   .container {
     width: 100%;
+
   }
 
   .numberInput {
@@ -135,6 +148,7 @@ input::-webkit-inner-spin-button {
     font-size: 1.2rem;
   }
 }
+
 
 /* Desktop (1500+px) */
 @media (min-width: 1501px) {

@@ -4,12 +4,8 @@
   grid-template-rows: repeat(2, auto);
   row-gap:0px;
   align-items: center;
-  max-width: 454px;
+  max-width: 28.375rem;
   width: 100%;
-  /* padding: 20px; */
-  /* border: 1px solid #ccc; */
-  /* border-radius: 8px; */
-  /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
   background: hsla(183, 100%, 15%, 1);
   font-family: "Space Mono";
   line-height: 1.4;
@@ -19,6 +15,7 @@
 
 
 .label1 {
+  width: 100%;
   align-items: center;
   grid-column: 1 / 2;
   grid-row: 1 / 2;
@@ -26,11 +23,13 @@
 }
 
 .label2 { 
+  
+  width: 100%;
   align-items: center;
   grid-column: 1/ 2;
   grid-row: 2 / 3;
   font-weight:400;
-  color: hsla(177, 12%, 66%, 1);
+  color: hsla(177, 12%, 66%, 1); 
 }
 
 .inputContainer {
@@ -44,8 +43,6 @@
   flex: 2;
   border: none;
   outline: none;
-  /* padding: 8px; */
-  /* border-radius: 4px; */
   text-align:right;
   text-wrap: wrap;
   font-family: "Space Mono";
@@ -71,21 +68,27 @@
   .inputContainer{
   /* line-height: 43.55px; */
   /* font-size: 12.4px; */
+  width: 100%;
   text-align:right;
   text-wrap: wrap;
-  padding: 0px 16px;
+  padding-right:16px;
   }
+  
   .label2,.label1{
-    font-size: 12.25px;
-    line-height: 18.14px;
+    width: 100%;
+    font-size: 0.766rem;
+    line-height: 1.134rem;
     text-wrap: wrap;
     text-align:left;
+  letter-spacing: 0.076rem;
   
   }
+
   .numberInput{
+    width: 100%;
     padding: 0px;
-    font-size: 29.4px;
-    line-height: 43.55px;
+    font-size: 1.838rem;
+    line-height: 2.722rem;
   }
 
 }

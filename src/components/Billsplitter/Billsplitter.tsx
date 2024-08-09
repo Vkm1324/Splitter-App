@@ -98,10 +98,12 @@ const Billsplitter: React.FC<BillsplitterProps> = (Props) => {
       previouslySelected.classList.remove(tipstyles.selected);
     }
     dispatch({ type: "RESET" });
-    const billAmountInput = document.getElementById(Props.idForBill);
-    if (billAmountInput) {
-      billAmountInput.focus();
-    }
+    const element = document.querySelector(
+      '[tabindex="0"]'
+    ) as HTMLInputElement;
+    if (element) {
+      element.focus();
+    } 
     updateResetButtonState(true);
   };
 
