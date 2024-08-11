@@ -1,16 +1,10 @@
 .mainContainer{
   background-color: #9FE8DF;
-  width: 100%;
-  /* justify-content: center;
-  align-items: center;
-  display: flex;
-  flex-direction: column; */
+  width: 100%; 
 }
 
 .titleContainer{
-  width: 100%;
-  /* max- */
-  /* height: 145px; */
+  width: 100%; 
   background-color: #9FE8DF;
   padding: 40px 545px;
 }
@@ -20,8 +14,7 @@
   font-weight: 700;
   font-size: 1.5rem;
   font-family: "Space Mono";
-  line-height: 2.221rem;
-  /* padding:0px 80px; */
+  line-height: 2.221rem; 
   letter-spacing: .75rem;
   max-width: 6.69rem;
   width: 100%;
@@ -34,8 +27,8 @@
   /* gap: 16px; */
   /* width: 72.375rem; */
   /* TODO just changed width 100% */
-  width: 100%;
   max-width: 80rem;
+  width: 100%;
   padding: 61px;
   background-color: hsla(0, 0%, 100%, 1);
   /* grid-area: auto; */
@@ -44,7 +37,7 @@
 }
 .leftContainer{
   /* padding: 60px 60px 90px 60px; */
-  max-width: 32.875rem;
+  /* max-width: 32.875rem; */
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -57,7 +50,7 @@
   /* padding:0px 60px; */
   background-color: hsla(183, 100%, 15%, 1);
   border-radius: 16px;
-  max-width: 35.375rem;
+  /* max-width: 35.375rem; */
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -94,6 +87,7 @@
   .contentContainer { 
     /* padding: 8px; */
     max-width: 23.438rem;
+    width: 100%;
     display:flex;
     flex-direction: column;
     padding: 0px 32px;
@@ -108,12 +102,14 @@
 
   .rightContainer{
     max-width: 23.438rem;
+    width: 100%;
     /* gap:24px; */
     row-gap: 0px;
     /* margin: 32px; */
     padding: 0px;
     /* width: 100%; */
   }
+
   .totalAmount,.tipAmount,.reset{
     padding: 0px 15px;
     padding-top: 24px;
@@ -122,14 +118,5 @@
     padding-top: 60px;
     padding-bottom: 20px;
   }
-
-  /* .numberInput {
-    font-size: 14px;
-    line-height: 20.73px;
-  } */
-
-  /* .label,
-  .errorMsg {
-    font-size: 1rem;
-  } */
+ 
 }

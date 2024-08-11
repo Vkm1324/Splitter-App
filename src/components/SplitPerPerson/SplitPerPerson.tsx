@@ -22,7 +22,7 @@ const SplitPerPerson: React.FC<SplitPerPersonProps> = (Props) => {
            type="string"
            value={'$'+numberInput.toFixed(2)}
            className={styles.numberInput}
-           placeholder="$0.00"
+           placeholder="$ -.--/"
            readOnly
          />
        </div>

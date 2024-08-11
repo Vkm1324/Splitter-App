@@ -9,11 +9,12 @@
   --white: #FEFFFF;       
   --stroke-green: #5BABA2; 
    /* TODO set-up widht and height max 100%*/
-
+width: 100%;
 
 }
 
 body {
   margin: 0;
+  width: 100%;
   display: flex; 
 }

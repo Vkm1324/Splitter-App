@@ -11,7 +11,12 @@ import TipMenu from "./TipMenu";
     
     export default meta;
     type Story=StoryObj<typeof meta>;
-    
+      const handleTipButtonClick = (value: string) => {
+    const tipPercentage = parseFloat(value) / 100;
+    // dispatch({ type: "SET_SELECTED_TIP_VALUE", payload: tipPercentage.toString() });
+        // updateResetButtonState(false);
+        console.log(tipPercentage);
+  };
 export const Default: Story = {
   args: {
     buttonContent1: "5",
@@ -21,5 +26,6 @@ export const Default: Story = {
     buttonContent4: "20",
     buttonContent5: "50",
     buttonContent6: "CUSTOM",
+    onButtonClick: handleTipButtonClick,
   },
 };

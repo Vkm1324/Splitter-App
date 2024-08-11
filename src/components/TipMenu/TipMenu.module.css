@@ -27,6 +27,7 @@
 }
 
 .gridButton {
+  font-family: "Space Mono";
   max-width: 9.93rem;
   width: 100%;
   color: white;
@@ -58,27 +59,26 @@
   max-width: 9.93rem;
   width: 100%;
   cursor: pointer; 
-  text-wrap: wrap;
-  /* padding: .5rem 0rem; */
-  /* border: 2px hidden white;  */
+  text-wrap: wrap; 
+  border: 2px hidden white; 
   font-size: 2rem;
   letter-spacing: 1px;
   font-weight: 700;
 }
 
+.customButton:focus{
+  color: hsla(183, 100%, 15%, 1); 
+   outline: 2px solid #26C2AD;
+}
+
 .selected{
   background-color:#26C2AD;
   color: hsla(183, 100%, 15%, 1);
-  border-color: #26C2AD;
+  /* border-color: #26C2AD; */
+   /* outline: 2px solid #26C2AD; */
 }
 
-/* .gridButton:focus{
-  background-color:#26C2AD;
-  color: hsla(183, 100%, 15%, 1);
-  border-color: #26C2AD;
-} */
-
-.customButton:focus {
+.customButtonselected {
   outline:2px solid #9FE8DF; 
   color: hsla(183, 100%, 15%, 1);
   /* border-color: #26C2AD; */

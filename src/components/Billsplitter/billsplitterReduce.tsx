@@ -1,19 +1,19 @@
 export type Action =
-  | { type: "SET_BILL_AMOUNT"; payload: number } 
-  | { type: "SET_NUMBER_OF_PERSONS"; payload: number } 
-  | { type: "SET_SELECTED_TIP_VALUE"; payload: number } 
+  | { type: "SET_BILL_AMOUNT"; payload: string } 
+  | { type: "SET_NUMBER_OF_PERSONS"; payload: string } 
+  | { type: "SET_SELECTED_TIP_VALUE"; payload: string } 
   | { type: "RESET" }
 
 export interface State {
-  billAmountInput: number; 
-  numberOfPersonsInput: number; 
-  selectedTipValue: number; 
+  billAmountInput: string;
+  numberOfPersonsInput: string;
+  selectedTipValue: string;
 }
 
 export const initialState: State = {
-  billAmountInput:0, 
-  numberOfPersonsInput: 1, 
-  selectedTipValue: 0,
+  billAmountInput:"", 
+  numberOfPersonsInput: "1", 
+  selectedTipValue: "",
 };
 
 export function reducer(state: State, action: Action): State {
