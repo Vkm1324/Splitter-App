@@ -6,7 +6,7 @@
   align-items: center;
   max-width: 28.375rem;
   width: 100%;
-  background: hsla(183, 100%, 15%, 1);
+  background: var(--dark-green);
   font-family: "Space Mono";
   line-height: 1.4;
   font-weight:400;
@@ -19,7 +19,7 @@
   align-items: center;
   grid-column: 1 / 2;
   grid-row: 1 / 2;
-  color: hsla(180, 100%, 100%, 1);
+  color: var(--white);
 }
 
 .label2 { 
@@ -29,7 +29,7 @@
   grid-column: 1/ 2;
   grid-row: 2 / 3;
   font-weight:400;
-  color: hsla(177, 12%, 66%, 1); 
+  color: var(--text-color-light) 
 }
 
 .inputContainer {
@@ -50,11 +50,17 @@
   font-size:3rem;
   line-height: 71.01px;
   width: 100%;
-  color: hsla(172, 63%, 46%, 1);
-  background: hsla(183, 100%, 15%, 1);
+  /* TODO  clarify the color of number to diplay */
+  color:#2CC0AD;  /* hsl(172, 63%, 46%); */
+  /* color: var(--base-green); */
+  background: var(--dark-green);
 }
 ::placeholder{
-  color: hsla(172, 63%, 46%, 1);
+  
+  /* TODO  clarify the color of number to diplay */
+  color:#2CC0AD ; /* hsl(172, 63%, 46%); */
+  /* color: var(--base-green); */
+
   }
 
   @media (max-width: 550px) {

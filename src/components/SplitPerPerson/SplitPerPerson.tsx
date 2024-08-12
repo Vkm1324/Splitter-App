@@ -1,5 +1,6 @@
 import React from 'react';
 import "../../App.css";
+// import "../../index.css";
 import styles from './SplitPerPerson.module.css';
 interface SplitPerPersonProps {
   /**

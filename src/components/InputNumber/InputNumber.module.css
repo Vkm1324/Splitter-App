@@ -1,5 +1,5 @@
 .container {
-  background-color: white;
+  background-color: var(--white);
   width: 100%;
   max-width: 32.75rem;
   display: flex;
@@ -11,22 +11,18 @@
 .inputContainer {
   display: flex;
   flex-direction: row;
-  /* justify-content: center; */
-  background-color:hsla(203, 50%, 97%, 1);
-   /* var(--input-field-color); */
+  background-color: var(--bg-shade);
   border-radius: 6px;
-  max-width: calc(100%)
+  max-width: calc(100%);
 }
 
 .inputContainer:focus-within {
-  outline: 3px solid #5aa79d;
+  outline: 3px solid var(--stroke-green);
 }
-
 
 .iconContainer {
   display: flex;
   padding: 8px 20px;
-  /* justify-content: center; */
 }
 
 .numberInput {
@@ -34,22 +30,23 @@
   padding: 8px 0px;
   padding-right: 15px;
   text-align: right;
-  width: calc(100% );
-    background: hsla(203, 50%, 97%, 1);
-  /* background-color: var(--input-field-color); */
+  width: calc(100%);
+  background: var(--bg-shade);
   border-radius: 6px;
   font-size: 2rem;
   border: none;
   outline: none;
   font-weight: 700;
-  color: #00474b; 
+  color: var(--dark-green);
   font-family: "Space Mono";
 }
-.numberInput:hover{
-   cursor: pointer;
+
+.numberInput:hover {
+  cursor: pointer;
 }
+
 .numberInput::placeholder {
-  color: #9fb3b2;
+  color: var(--text-color-light);
 }
 
 .label {
@@ -59,14 +56,13 @@
   font-size: 1.25rem;
   font-weight: 700;
   line-height: 1.5;
-  color: #5d6b6c;
+  color: var(--text-color);
   letter-spacing: 0.1em;
 }
 
-
-/* TODO create a outline for input div when error  */
+/* TODO create a outline for input div when error */
 .inputContainer.errorOutline {
-  outline: 3px solid red;
+  outline: 3px solid var(--error);
 }
 
 .errorMsg {
@@ -75,14 +71,13 @@
   font-size: 1.25rem;
   font-weight: 700;
   line-height: 1.5;
-  color: red;
+  color: var(--error);
   letter-spacing: 0.1em;
-  /* minimum height for the hidden div (error ) so that the content shift isn't visible */
   min-height: 1.9rem;
   text-align: end;
 }
 
-img{
+img {
   padding: 8px 20px;
 }
 
@@ -95,7 +90,6 @@ input::-webkit-inner-spin-button {
 /* Mobile (0-550px) */
 @media (max-width: 550px) {
   .container { 
-    /* padding: 0px 32px; */
     max-width: 20rem;
     width: 100%;
     padding-top: 2rem;
@@ -118,11 +112,11 @@ input::-webkit-inner-spin-button {
 }
 
 /* Tablet (550-1100px) */
-@media (min-width: 551px) and (max-width: 1100px) {
+@media (min-width: 962px) and (max-width: 1100px) {
   .container {
     width: 100%;
   }
-  .inputContainer{
+  .inputContainer {
     width: 100%;
   }
   .numberInput {
@@ -141,7 +135,6 @@ input::-webkit-inner-spin-button {
 @media (min-width: 1101px) and (max-width: 1500px) {
   .container {
     width: 100%;
-
   }
 
   .numberInput {
@@ -155,7 +148,6 @@ input::-webkit-inner-spin-button {
     width: 100%;
   }
 }
-
 
 /* Desktop (1500+px) */
 @media (min-width: 1501px) {

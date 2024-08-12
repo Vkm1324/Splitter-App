@@ -8,13 +8,13 @@
   letter-spacing: 2px;
   display: flex;
   flex-direction: column;
-  /* gap: 21.87%; */
+  background-color: var(--white); 
 }
 
 .label {
   /* max-width: 10.5rem; */
   padding-bottom: 24px;
-  color: hsla(184, 7%, 39%, 1);
+  color: var(--text-color);
 }
 
 .gridContainer {
@@ -30,8 +30,8 @@
   font-family: "Space Mono";
   max-width: 9.93rem;
   width: 100%;
-  color: white;
-  background-color: hsla(183, 100%, 15%, 1);
+  color: var(--white);
+  background-color: var(--dark-green);
   border-radius: 6px;
   border: none;
   text-align: center;
@@ -42,16 +42,14 @@
   letter-spacing: 10%;
 }
 
-.gridButton:hover {
-  /* color:	hsl(173, 61%, 77%); */
-  /* : hsla(172, 67%, 45%, 1); */
-  color: hsla(183, 100%, 15%, 1);
+.gridButton:hover { 
+  color:var(--dark-green);
   background-color:#9FE8DF;
 }
 
 .customButton{
-  background: hsla(203, 50%, 97%, 1);
-  color: hsla(183, 100%, 15%, 1);
+  background: var(--bg-shade);
+  color:var(--dark-green);
   font-family: "Space Mono";
   border-radius: 6px;
   border: none;
@@ -60,7 +58,7 @@
   width: 100%;
   cursor: pointer; 
   text-wrap: wrap; 
-  border: 2px hidden white; 
+  /* border: 2px hidden white;  */
   font-size: 2rem;
   letter-spacing: 1px;
   font-weight: 700;
@@ -68,26 +66,25 @@
 
 .customButton:focus{
   color: hsla(183, 100%, 15%, 1); 
+  /* TODO clarify the color of outline */
    outline: 2px solid #26C2AD;
 }
 
 .selected{
+  
+  /* TODO clarify the color of back-ground */
   background-color:#26C2AD;
-  color: hsla(183, 100%, 15%, 1);
-  /* border-color: #26C2AD; */
-   /* outline: 2px solid #26C2AD; */
+  color: var(--dark-green); 
 }
 
 .customButtonselected {
   outline:2px solid #9FE8DF; 
-  color: hsla(183, 100%, 15%, 1);
-  /* border-color: #26C2AD; */
-  text-align: center;
-  /* border:.1px solid #9FE8DF; */
+  color:var(--dark-green);
+   text-align: center; 
 }
 
 .customButton::placeholder {
-  color: hsla(184, 7%, 39%, 1);
+  color: var(--text-color);
 
 }
  
@@ -99,6 +96,7 @@
     max-width: 23.438rem;
     display:flex;
     gap: 24%;
+    padding-bottom: 2px;
     /* padding: 0px 32px; */
     /* flex-direction: column; */
   }

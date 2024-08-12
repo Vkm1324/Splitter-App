@@ -1,5 +1,6 @@
 import React, { useState, useRef } from "react";
 import "../../App.css";
+import "../../index.css";
 import styles from "./TipMenu.module.css";
 
 interface TipMenuProps {

@@ -1,5 +1,6 @@
 import React, { RefObject } from "react";
 import "../../App.css";
+import "../../index.css";
 import styles from "./InputNumber.module.css";
 import dollar from "./assests/dollar.svg";
 import person from "./assests/person.svg";

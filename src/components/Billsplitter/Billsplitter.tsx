@@ -3,6 +3,7 @@ import styles from "./Billsplitter.module.css";
 import tipstyles from "../TipMenu/TipMenu.module.css";
 import resetStyles from "../Resetbutton/Resetbutton.module.css";
 import "../../App.css";
+import "../../index.css";
 import InputNumber from "../InputNumber/InputNumber";
 import TipMenu from "../TipMenu/TipMenu";
 import SplitperPerson from "../SplitPerPerson/SplitPerPerson";

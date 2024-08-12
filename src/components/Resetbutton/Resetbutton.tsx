@@ -1,5 +1,6 @@
 import React, { useRef } from "react";
 import styles from "./Resetbutton.module.css";
+import "../../index.css";
 
 interface ResetbuttonProps {
   /**
