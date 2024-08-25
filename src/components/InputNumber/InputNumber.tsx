@@ -1,47 +1,16 @@
-import React, { RefObject } from "react";
-import "../../App.css";
+// import "../../App.css";
 import "../../index.css";
-import styles from "./InputNumber.module.css";
 import dollar from "./assests/dollar.svg";
 import person from "./assests/person.svg";
 
 export interface InputNumberProps {
-  /**
-   * Label for the number input field
-   */
   label: string;
-  /**
-   * Id for the number input field
-   */
   inputId: string;
-  /**
-   * Icon
-   */
   icon: "dollar" | "person";
-  /**
-   * Number fed to the input field
-   */
   numberInput: string;
-  /**
-   * Error to display when number is negative
-   */
   error: () => string;
-  /**
-   * Function to handle changes to the input value
-   */
   onNumberInputChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  /**
-   * Tab index value for input
-   */
-  tabIndexValue: number;
-  /**
-   * Input reference
-   */
-  inputRef: RefObject<HTMLInputElement>;
-
-  /**
-   * Placeholder text for the input field
-   */
+  tabIndexValue: number; 
   placeHolder: string;
 }
 
@@ -54,29 +23,36 @@ const InputNumber: React.FC<InputNumberProps> = ({
   error,
   tabIndexValue,
   placeHolder,
-  inputRef,
 }) => {
   const iconSrc = icon === "dollar" ? dollar : person;
 
   return (
-    <div className={styles.container}>
-      <label className={styles.label} htmlFor={inputId}>
+    <div className="bg-white w-full max-w-[32.75rem] flex flex-col gap-3 font-text">
+      <label
+        className="max-w-max font-bold text-[1.25rem]  tracking-[0.1em] leading-[1.5rem] text-text-color "
+        htmlFor={inputId}
+      >
         {label}
       </label>
-      <div className={styles.inputContainer}>
-        <img className={styles.img} src={iconSrc} alt="icon" />
+      <div className="flex flex-row  rounded-[6px] max-w-full focus-within:outline focus-within:outline-3 focus-within:outline-stroke-green">
+        <img
+          className="px-[20px] py-[8px]  bg-bg-shade"
+          src={iconSrc}
+          alt="icon"
+        />
         <input
           type="text"
           id={inputId}
           value={numberInput}
           tabIndex={tabIndexValue}
           onChange={onNumberInputChange}
-          className={styles.numberInput}
+          className="flex-2 pr-[15px] py-[8px] text-right w-full bg-bg-shade rounded-[6px] text-2xl font-bold text-dark-green border-none outline-none cursor-pointer placeholder:text-text-color-light"
           placeholder={placeHolder}
-          ref={inputRef}
         />
       </div>
-      <div className={styles.errorMsg}>{error()}</div>
+      <div className="min-h-[1.9rem] text-end max-w-max font-bold text-[1.25rem] text-error tracking-[0.1em] leading-[1.5rem]">
+        {error()}
+      </div>
     </div>
   );
 };

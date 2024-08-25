@@ -1,5 +1,3 @@
- 
-import './App.css'
 import Billsplitter from './components/Billsplitter/Billsplitter';
 // import Default from "./components/Billsplitter/Billsplitter.stories";
 function App() { 
@@ -7,8 +5,10 @@ function App() {
     <>
       <Billsplitter
         inputLabel1={"Bill"}
+        // TODO linkt it to inital state
         BillAmountInput1={0}
         inputLabel2={"Number of people"}
+        // TODO linkt it to inital state
         NumberOfPeopleInput={1}
         tipMenuLabel={"Select tip %"}
         buttonContent1={"5"}
@@ -21,13 +21,12 @@ function App() {
         splitLabel2={"/ person"}
         splitLabel3={"Total"}
         splitLabel4={"/ person"}
-        idFotsplitter1={""}
-        idFotsplitter2={""}
+        idForSplitter1={""}
+        idForSplitter2={""}
         idForBill={""}
         idForNumberOfPeople={""}
         idForResetButton='RESET'
         title={'SPLITTER'}      >
-        
         </Billsplitter>
     </>
   );
