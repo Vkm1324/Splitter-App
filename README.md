@@ -1,30 +1,44 @@
-# React + TypeScript + Vite
+# 💰 Bill Splitter  
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple, responsive, and intuitive web app to split bills among friends. It calculates the tip per person, total amount per person, and supports both preset and custom tip percentages. Works seamlessly across all screen sizes!  
 
-Currently, two official plugins are available:
+You can add a section in your README like this:  
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Live Demo 🚀  
+Check out the live version of **Bill Splitter** hosted on Vercel:  
+👉 [Your Live Link Here](https://splitter-app-weld.vercel.app/)  
 
-## Expanding the ESLint configuration
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## 🚀 Features  
+- **Bill Splitting:** Enter the bill amount and number of people  
+- **Tip Calculation:** Choose a tip percentage or enter a custom tip  
+- **Real-Time Updates:** Instant calculation of tip per person and total amount per person  
+- **Fully Responsive:** Optimized for all screen sizes (mobile, tablet, desktop)  
+- **Fast & Lightweight:** Built with modern web technologies for high performance  
 
-- Configure the top-level `parserOptions` property like this:
+## 🛠 Tech Stack  
+- **Framework:** React  
+- **Language:** TypeScript  
+- **Styling:** Modular CSS  
+- **Bundler:** Vite  
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json', './tsconfig.app.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+## 🔧 Installation & Setup  
+1. **Clone the repository:**  
+   ```sh
+   git clonehttps://github.com/Vkm1324/Splitter-App
+   cd Splitter-App
+   ```  
+2. **Install dependencies:**  
+   ```sh
+   pnpm install
+   ```  
+3. **Run the development server:**  
+   ```sh
+   npm run dev
+   ```  
+## 📷 Screenshots  
+### Desktop View  
+![Bill Splitter Desktop View](public/desktop-view.png)  
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+### Mobile View  
+![Bill Splitter Mobile View](public/mobile-view.png)  
