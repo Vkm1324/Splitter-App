@@ -10,7 +10,12 @@
   --stroke-green: #005c00; /* Replace with your stroke green color */
 }
 
-body {
+html, body {
   margin: 0;
-  display: flex; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100dvh; /* Dynamic viewport height */
+  background: #9FE8DF;
 }
+

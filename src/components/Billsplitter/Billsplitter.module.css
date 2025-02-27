@@ -1,5 +1,6 @@
 .mainContainer{
   background-color: #9FE8DF;
+  max-width: 100%; 
 }
 
 .titleContainer{
@@ -29,7 +30,7 @@
   display: flex;
   gap: 16px;
   /* width: 72.375rem; */
-  width: 1280px;
+  max-width: 1280px;
   padding: 61px;
   background-color: hsla(0, 0%, 100%, 1);
   /* grid-area: auto; */

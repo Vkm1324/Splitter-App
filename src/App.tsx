@@ -1,7 +1,6 @@
  
 import './App.css'
-import Billsplitter from './components/Billsplitter/Billsplitter';
-// import Default from "./components/Billsplitter/Billsplitter.stories";
+import Billsplitter from './components/Billsplitter/Billsplitter'; 
 function App() { 
   return (
     <>
@@ -24,8 +23,9 @@ function App() {
         idFotsplitter1={""}
         idFotsplitter2={""}
         idForBill={""}
-        idForNumberOfPeople={""}
-      ></Billsplitter>
+        idForNumberOfPeople={""} 
+        title1={'SPLITTER'} 
+        idForResetButton={'RESET'}      ></Billsplitter>
     </>
   );
 }
